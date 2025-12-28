@@ -37,6 +37,7 @@ export function Chat({
   initialMessages,
   initialChatModel,
   initialVisibilityType,
+  initialSystemPrompt,
   isReadonly,
   autoResume,
 }: {
@@ -44,6 +45,7 @@ export function Chat({
   initialMessages: ChatMessage[];
   initialChatModel: string;
   initialVisibilityType: VisibilityType;
+  initialSystemPrompt: string | null;
   isReadonly: boolean;
   autoResume: boolean;
 }) {
@@ -201,6 +203,7 @@ export function Chat({
         <ChatHeader
           chatId={id}
           isReadonly={isReadonly}
+          selectedSystemPrompt={initialSystemPrompt}
           selectedVisibilityType={initialVisibilityType}
         />
 
