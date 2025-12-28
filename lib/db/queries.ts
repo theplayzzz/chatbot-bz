@@ -515,6 +515,26 @@ export async function updateChatVisibilityById({
   }
 }
 
+export async function updateChatSystemPromptById({
+  chatId,
+  systemPrompt,
+}: {
+  chatId: string;
+  systemPrompt: string | null;
+}) {
+  try {
+    return await db
+      .update(chat)
+      .set({ systemPrompt })
+      .where(eq(chat.id, chatId));
+  } catch (_error) {
+    throw new ChatSDKError(
+      "bad_request:database",
+      "Failed to update chat system prompt"
+    );
+  }
+}
+
 export async function updateChatTitleById({
   chatId,
   title,
